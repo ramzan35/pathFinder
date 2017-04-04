@@ -225,6 +225,7 @@ public class PathFindingOnSquaredGrid {
         // You should position this command accordingly in order to perform the algorithmic analysis
 
         //        LinkedList<Integer>[] arr = vertex;
+        //  assignHCost.assign(randomlyGenMatrix,Bi,Bj);
 
         Stopwatch timerFlow = null;
 
@@ -268,14 +269,17 @@ public class PathFindingOnSquaredGrid {
                 StdDraw.clear(StdDraw.WHITE);
                 switch (command) {
                     case "M":
+                        PathFinder.pathDesign=1;
                         timerFlow = new Stopwatch();
                         PathFinder.Man();
                         break;
                     case "E":
+                        PathFinder.pathDesign=2;
                         timerFlow = new Stopwatch();
                         PathFinder.Ec();
                         break;
                     case "C":
+                        PathFinder.pathDesign=3;
                         timerFlow = new Stopwatch();
                         PathFinder.Che();
                         break;
