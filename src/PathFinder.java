@@ -8,7 +8,7 @@ import java.util.*;
 
 class PathFinder {
 
-    private static int pathDesign=1;
+    private static int pathDesign;
     private static int DIAGONAL_COST;
     private static int Vertical_Horizontal_COST;
     //    private static ArrayList<Node> path;
@@ -156,6 +156,7 @@ class PathFinder {
 
     static void Man() {
         Vertical_Horizontal_COST = 10;
+        pathDesign = 1;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -166,7 +167,7 @@ class PathFinder {
         findShortestPath(false);
 
         //will Show green filledSquares if there is a path
-        pathDesign = 1;
+
 
         StdDraw.setPenColor(StdDraw.GREEN);
         System.out.println("Cost for the manhattan path : " + calculateCost());
@@ -175,6 +176,7 @@ class PathFinder {
 
     static void Ec() {
         DIAGONAL_COST = 14;
+        pathDesign = 2;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -186,7 +188,7 @@ class PathFinder {
         findShortestPath(true);
 
         //will Show blue circles if there is a path
-        pathDesign = 2;
+
 
         StdDraw.setPenColor(StdDraw.BLUE);
         System.out.println("Cost for the euclidean path : " + calculateCost());
@@ -195,6 +197,7 @@ class PathFinder {
 
     static void Che() {
         DIAGONAL_COST = 10;
+        pathDesign = 3;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -206,7 +209,7 @@ class PathFinder {
         findShortestPath(true);
 
         //will Show yellow line if there is a path
-        pathDesign = 3;
+
 
         StdDraw.setPenColor(StdDraw.YELLOW);
         System.out.println("Cost for the chebeshev path : " + calculateCost());
@@ -311,7 +314,6 @@ class PathFinder {
     }
 
     private static void assignHCost(Node vertex){
-
         if(pathDesign==1){
             cell[vertex.row][vertex.col].hCost = Math.abs(vertex.row - endI) + Math.abs(vertex.col - endJ);
         }
@@ -319,7 +321,7 @@ class PathFinder {
             cell[vertex.row][vertex.col].hCost = (int) Math.sqrt(Math.pow(vertex.row - endI,2) + Math.pow(vertex.col - endJ,2));
         }
         else{
-            cell[vertex.row][vertex.col].hCost = Math.max((vertex.row - endI),(vertex.col - endJ));
+            cell[vertex.row][vertex.col].hCost = Math.max(Math.abs(vertex.row - endI),Math.abs(vertex.col - endJ));
         }
     }
 }

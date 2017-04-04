@@ -240,8 +240,8 @@ public class PathFindingOnSquaredGrid {
                 //show path based on Manhattan
                 PathFinder.Man();
 //
-                /*PathFinder.Ec();
-                PathFinder.Che();*/
+                PathFinder.Ec();
+                PathFinder.Che();
 
                 System.out.println();
 
