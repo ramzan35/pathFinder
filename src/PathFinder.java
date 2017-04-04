@@ -9,8 +9,8 @@ import java.util.*;
 class PathFinder {
 
     public static int pathDesign=1;
-    private static int DIAGONAL_COST;
-    private static int Vertical_Horizontal_COST;
+    private static int DIAGONAL_COST=10;
+    private static int Vertical_Horizontal_COST=10;
     //    private static ArrayList<Node> path;
     private static Node[][] cell;
     private static boolean[][] bloackedCells;
@@ -156,7 +156,7 @@ class PathFinder {
 
     static void Man() {
         Vertical_Horizontal_COST = 10;
-//        pathDesign = 1;
+        pathDesign = 1;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -176,7 +176,7 @@ class PathFinder {
 
     static void Ec() {
         DIAGONAL_COST = 14;
-//        pathDesign = 2;
+        pathDesign = 2;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -197,7 +197,7 @@ class PathFinder {
 
     static void Che() {
         DIAGONAL_COST = 10;
-//        pathDesign = 3;
+        pathDesign = 3;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -209,7 +209,6 @@ class PathFinder {
         findShortestPath(true);
 
         //will Show yellow line if there is a path
-
 
         StdDraw.setPenColor(StdDraw.YELLOW);
         System.out.println("Cost for the chebeshev path : " + calculateCost());

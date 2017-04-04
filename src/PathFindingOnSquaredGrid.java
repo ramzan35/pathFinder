@@ -225,7 +225,7 @@ public class PathFindingOnSquaredGrid {
         // You should position this command accordingly in order to perform the algorithmic analysis
 
         //        LinkedList<Integer>[] arr = vertex;
-        //  assignHCost.assign(randomlyGenMatrix,Bi,Bj);
+          assignHCost.assign(randomlyGenMatrix,Bi,Bj);
 
         Stopwatch timerFlow = null;
 
