@@ -183,10 +183,10 @@ public class PathFindingOnSquaredGrid {
         show(randomlyGenMatrix, true);
 
         System.out.println();
-        System.out.println("The system percolates: " + percolates(randomlyGenMatrix));
+//        System.out.println("The system percolates: " + percolates(randomlyGenMatrix));
 
         System.out.println();
-        System.out.println("The system percolates directly: " + percolatesDirect(randomlyGenMatrix));
+//        System.out.println("The system percolates directly: " + percolatesDirect(randomlyGenMatrix));
         System.out.println();
 
         int Ai, Aj, Bi, Bj;

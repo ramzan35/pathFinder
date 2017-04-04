@@ -8,7 +8,7 @@ import java.util.*;
 
 class PathFinder {
 
-    private static int pathDesign;
+    private static int pathDesign=1;
     private static int DIAGONAL_COST;
     private static int Vertical_Horizontal_COST;
     //    private static ArrayList<Node> path;
@@ -56,7 +56,8 @@ class PathFinder {
                 //if the the current index is blocked or already created skip this process
                 if (bloackedCells[currentNode.row - 1][currentNode.col] && cell[currentNode.row - 1][currentNode.col] == null) {
                     cell[currentNode.row - 1][currentNode.col] = new Node(currentNode.row - 1, currentNode.col);
-                    cell[currentNode.row - 1][currentNode.col].hCost = Math.abs(currentNode.row - 1 - endI) + Math.abs(currentNode.col - endJ);
+                    //cell[currentNode.row - 1][currentNode.col].hCost = Math.abs(currentNode.row - 1 - endI) + Math.abs(currentNode.col - endJ);
+                    assignHCost(cell[currentNode.row - 1][currentNode.col]);
                 }
                 neighbourNode = cell[currentNode.row - 1][currentNode.col];
 
@@ -68,7 +69,8 @@ class PathFinder {
                 if (currentNode.col - 1 >= 0 && forAllDirections) {
                     if (bloackedCells[currentNode.row - 1][currentNode.col - 1] && cell[currentNode.row - 1][currentNode.col - 1] == null) {
                         cell[currentNode.row - 1][currentNode.col - 1] = new Node(currentNode.row - 1, currentNode.col - 1);
-                        cell[currentNode.row - 1][currentNode.col - 1].hCost = Math.abs(currentNode.row - 1 - endI) + Math.abs(currentNode.col - 1 - endJ);
+                        //cell[currentNode.row - 1][currentNode.col - 1].hCost = Math.abs(currentNode.row - 1 - endI) + Math.abs(currentNode.col - 1 - endJ);
+                        assignHCost(cell[currentNode.row - 1][currentNode.col - 1]);
                     }
                     neighbourNode = cell[currentNode.row - 1][currentNode.col - 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -79,7 +81,8 @@ class PathFinder {
                 if (currentNode.col + 1 < cell[0].length && forAllDirections) {
                     if (bloackedCells[currentNode.row - 1][currentNode.col + 1] && cell[currentNode.row - 1][currentNode.col + 1] == null) {
                         cell[currentNode.row - 1][currentNode.col + 1] = new Node(currentNode.row - 1, currentNode.col + 1);
-                        cell[currentNode.row - 1][currentNode.col + 1].hCost = Math.abs(currentNode.row - 1 - endI) + Math.abs(currentNode.col + 1 - endJ);
+//                        cell[currentNode.row - 1][currentNode.col + 1].hCost = Math.abs(currentNode.row - 1 - endI) + Math.abs(currentNode.col + 1 - endJ);
+                        assignHCost(cell[currentNode.row - 1][currentNode.col + 1]);
                     }
                     neighbourNode = cell[currentNode.row - 1][currentNode.col + 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -91,7 +94,8 @@ class PathFinder {
             if (currentNode.col - 1 >= 0) {
                 if (bloackedCells[currentNode.row][currentNode.col - 1] && cell[currentNode.row][currentNode.col - 1] == null) {
                     cell[currentNode.row][currentNode.col - 1] = new Node(currentNode.row, currentNode.col - 1);
-                    cell[currentNode.row][currentNode.col - 1].hCost = Math.abs(currentNode.row - endI) + Math.abs(currentNode.col - 1 - endJ);
+//                    cell[currentNode.row][currentNode.col - 1].hCost = Math.abs(currentNode.row - endI) + Math.abs(currentNode.col - 1 - endJ);
+                    assignHCost(cell[currentNode.row][currentNode.col - 1]);
                 }
                 neighbourNode = cell[currentNode.row][currentNode.col - 1];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -102,7 +106,8 @@ class PathFinder {
             if (currentNode.col + 1 < cell[0].length) {
                 if (bloackedCells[currentNode.row][currentNode.col + 1] && cell[currentNode.row][currentNode.col + 1] == null) {
                     cell[currentNode.row][currentNode.col + 1] = new Node(currentNode.row, currentNode.col + 1);
-                    cell[currentNode.row][currentNode.col + 1].hCost = Math.abs(currentNode.row - endI) + Math.abs(currentNode.col + 1 - endJ);
+//                    cell[currentNode.row][currentNode.col + 1].hCost = Math.abs(currentNode.row - endI) + Math.abs(currentNode.col + 1 - endJ);
+                    assignHCost(cell[currentNode.row][currentNode.col + 1]);
                 }
                 neighbourNode = cell[currentNode.row][currentNode.col + 1];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -115,7 +120,8 @@ class PathFinder {
             if (currentNode.row + 1 < cell.length) {
                 if (bloackedCells[currentNode.row + 1][currentNode.col] && cell[currentNode.row + 1][currentNode.col] == null) {
                     cell[currentNode.row + 1][currentNode.col] = new Node(currentNode.row + 1, currentNode.col);
-                    cell[currentNode.row + 1][currentNode.col].hCost = Math.abs(currentNode.row + 1 - endI) + Math.abs(currentNode.col - endJ);
+//                    cell[currentNode.row + 1][currentNode.col].hCost = Math.abs(currentNode.row + 1 - endI) + Math.abs(currentNode.col - endJ);
+                    assignHCost(cell[currentNode.row + 1][currentNode.col]);
                 }
                 neighbourNode = cell[currentNode.row + 1][currentNode.col];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -125,7 +131,8 @@ class PathFinder {
                 if (currentNode.col - 1 >= 0 && forAllDirections) {
                     if (bloackedCells[currentNode.row + 1][currentNode.col - 1] && cell[currentNode.row + 1][currentNode.col - 1] == null) {
                         cell[currentNode.row + 1][currentNode.col - 1] = new Node(currentNode.row + 1, currentNode.col - 1);
-                        cell[currentNode.row + 1][currentNode.col - 1].hCost = Math.abs(currentNode.row + 1 - endI) + Math.abs(currentNode.col - 1 - endJ);
+//                        cell[currentNode.row + 1][currentNode.col - 1].hCost = Math.abs(currentNode.row + 1 - endI) + Math.abs(currentNode.col - 1 - endJ);
+                        assignHCost(cell[currentNode.row + 1][currentNode.col - 1]);
                     }
                     neighbourNode = cell[currentNode.row + 1][currentNode.col - 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -136,7 +143,8 @@ class PathFinder {
                 if (currentNode.col + 1 < cell[0].length && forAllDirections) {
                     if (bloackedCells[currentNode.row + 1][currentNode.col + 1] && cell[currentNode.row + 1][currentNode.col + 1] == null) {
                         cell[currentNode.row + 1][currentNode.col + 1] = new Node(currentNode.row + 1, currentNode.col + 1);
-                        cell[currentNode.row + 1][currentNode.col + 1].hCost = Math.abs(currentNode.row + 1 - endI) + Math.abs(currentNode.col + 1 - endJ);
+//                        cell[currentNode.row + 1][currentNode.col + 1].hCost = Math.abs(currentNode.row + 1 - endI) + Math.abs(currentNode.col + 1 - endJ);
+                        assignHCost(cell[currentNode.row + 1][currentNode.col + 1]);
                     }
                     neighbourNode = cell[currentNode.row + 1][currentNode.col + 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
@@ -302,4 +310,16 @@ class PathFinder {
         }
     }
 
+    private static void assignHCost(Node vertex){
+
+        if(pathDesign==1){
+            cell[vertex.row][vertex.col].hCost = Math.abs(vertex.row - endI) + Math.abs(vertex.col - endJ);
+        }
+        else if(pathDesign==2){
+            cell[vertex.row][vertex.col].hCost = (int) Math.sqrt(Math.pow(vertex.row - endI,2) + Math.pow(vertex.col - endJ,2));
+        }
+        else{
+            cell[vertex.row][vertex.col].hCost = Math.max((vertex.row - endI),(vertex.col - endJ));
+        }
+    }
 }
