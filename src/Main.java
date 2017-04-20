@@ -12,8 +12,6 @@ public class Main {
         Comparator<String> comparator = new StringLengthComparator();
         PriorityQueue<String> queue = new PriorityQueue<String>(10, comparator);
         queue.add("short");
-        System.out.println(queue.poll());
-        queue.add("very long indeed");
         System.out.println(queue);
         queue.add("mediu");
         System.out.println(queue);
