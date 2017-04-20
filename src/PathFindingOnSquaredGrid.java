@@ -233,7 +233,7 @@ public class PathFindingOnSquaredGrid {
 
             try {
 //                AStar.myMethod(Ai, Aj, Bi, Bj, vertex, randomlyGenMatrix);
-                timerFlow = new Stopwatch();
+//                timerFlow = new Stopwatch();
 
                 //initialize variables in PathFinder class
                 PathFinder.initializeVar(Ai, Aj, Bi, Bj, randomlyGenMatrix);
@@ -244,9 +244,9 @@ public class PathFindingOnSquaredGrid {
 //                PathFinder.Ec();
 //                PathFinder.Che();
 
-                System.out.println();
+//                System.out.println();
 
-                StdOut.println("Elapsed time = " + timerFlow.elapsedTime());
+//                StdOut.println("Elapsed time = " + timerFlow.elapsedTime());
 
             } catch (Exception e) {
                 e.printStackTrace();
