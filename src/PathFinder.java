@@ -63,7 +63,7 @@ class PathFinder {
 
                 //check the surrounding node and add to openedList
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST - currentNode.hCost);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
 
                 //check the currentNode nodes top left node
                 if (currentNode.col - 1 >= 0 && forAllDirections) {
@@ -74,7 +74,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row - 1][currentNode.col - 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST - currentNode.hCost);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
                 }
 
                 //check the currentNode nodes top right node
@@ -86,7 +86,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row - 1][currentNode.col + 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST - currentNode.hCost);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
                 }
             }
 
@@ -99,7 +99,7 @@ class PathFinder {
                 }
                 neighbourNode = cell[currentNode.row][currentNode.col - 1];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST - currentNode.hCost);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
             }
 
             //check currentNode nodes right node
@@ -111,7 +111,7 @@ class PathFinder {
                 }
                 neighbourNode = cell[currentNode.row][currentNode.col + 1];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST - currentNode.hCost);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
             }
 
             //check cuurent nodes bottom 3 nodes
@@ -125,7 +125,7 @@ class PathFinder {
                 }
                 neighbourNode = cell[currentNode.row + 1][currentNode.col];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST  - currentNode.hCost);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
 
                 //check the currentNode nodes bottom left node
                 if (currentNode.col - 1 >= 0 && forAllDirections) {
@@ -136,7 +136,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row + 1][currentNode.col - 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST  - currentNode.hCost);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
                 }
 
                 //check the currentNode nodes bottom right node
@@ -148,7 +148,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row + 1][currentNode.col + 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST - currentNode.hCost);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
                 }
             }
         }
