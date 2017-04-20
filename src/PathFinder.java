@@ -156,7 +156,6 @@ class PathFinder {
 
     static void Man() {
         Vertical_Horizontal_COST = 10;
-//        pathDesign = 1;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -167,8 +166,6 @@ class PathFinder {
         findShortestPath(false);
 
         //will Show green filledSquares if there is a path
-
-
         StdDraw.setPenColor(StdDraw.GREEN);
         System.out.println("Cost for the manhattan path : " + calculateCost());
         //        showSquarePath();
@@ -176,7 +173,6 @@ class PathFinder {
 
     static void Ec() {
         DIAGONAL_COST = 14;
-//        pathDesign = 2;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -187,9 +183,7 @@ class PathFinder {
 //        calculateDistanceForEuclidean();
         findShortestPath(true);
 
-        //will Show blue circles if there is a path
-
-
+        //will Show blue circles if there is a patH
         StdDraw.setPenColor(StdDraw.BLUE);
         System.out.println("Cost for the euclidean path : " + calculateCost());
         //        showCirclePath();
@@ -197,7 +191,6 @@ class PathFinder {
 
     static void Che() {
         DIAGONAL_COST = 10;
-//        pathDesign = 3;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -209,7 +202,6 @@ class PathFinder {
         findShortestPath(true);
 
         //will Show yellow line if there is a path
-
         StdDraw.setPenColor(StdDraw.YELLOW);
         System.out.println("Cost for the chebeshev path : " + calculateCost());
         //        showLinePath();

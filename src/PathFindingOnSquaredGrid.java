@@ -239,7 +239,7 @@ public class PathFindingOnSquaredGrid {
                 PathFinder.initializeVar(Ai, Aj, Bi, Bj, randomlyGenMatrix);
 
                 //show path based on Manhattan
-                PathFinder.Man();
+//                PathFinder.Man();
 
 //                PathFinder.Ec();
 //                PathFinder.Che();
