@@ -265,10 +265,10 @@ public class PathFindingOnSquaredGrid {
             //get input from user for display a particular path
             String command = in.next();
 
-            while (!command.equals("a")) {
+            while (!command.equals("A")) {
                 StdDraw.clear(StdDraw.WHITE);
                 switch (command) {
-                    case "M":
+                    case "M" :
                         PathFinder.pathDesign=1;
                         timerFlow = new Stopwatch();
                         PathFinder.Man();
