@@ -225,7 +225,7 @@ public class PathFindingOnSquaredGrid {
         // You should position this command accordingly in order to perform the algorithmic analysis
 
         //        LinkedList<Integer>[] arr = vertex;
-          assignHCost.assign(randomlyGenMatrix,Bi,Bj);
+        //  assignHCost.assign(randomlyGenMatrix,Bi,Bj);
 
         Stopwatch timerFlow = null;
 
@@ -240,9 +240,9 @@ public class PathFindingOnSquaredGrid {
 
                 //show path based on Manhattan
                 PathFinder.Man();
-//
-                PathFinder.Ec();
-                PathFinder.Che();
+
+//                PathFinder.Ec();
+//                PathFinder.Che();
 
                 System.out.println();
 

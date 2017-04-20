@@ -8,9 +8,9 @@ import java.util.*;
 
 class PathFinder {
 
-    public static int pathDesign=1;
-    private static int DIAGONAL_COST=10;
-    private static int Vertical_Horizontal_COST=10;
+    public static int pathDesign = 1;
+    private static int DIAGONAL_COST = 10;
+    private static int Vertical_Horizontal_COST = 10;
     //    private static ArrayList<Node> path;
     private static Node[][] cell;
     private static boolean[][] bloackedCells;
@@ -63,7 +63,7 @@ class PathFinder {
 
                 //check the surrounding node and add to openedList
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST - currentNode.hCost);
 
                 //check the currentNode nodes top left node
                 if (currentNode.col - 1 >= 0 && forAllDirections) {
@@ -74,7 +74,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row - 1][currentNode.col - 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST - currentNode.hCost);
                 }
 
                 //check the currentNode nodes top right node
@@ -86,7 +86,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row - 1][currentNode.col + 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST - currentNode.hCost);
                 }
             }
 
@@ -99,7 +99,7 @@ class PathFinder {
                 }
                 neighbourNode = cell[currentNode.row][currentNode.col - 1];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST - currentNode.hCost);
             }
 
             //check currentNode nodes right node
@@ -111,7 +111,7 @@ class PathFinder {
                 }
                 neighbourNode = cell[currentNode.row][currentNode.col + 1];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST - currentNode.hCost);
             }
 
             //check cuurent nodes bottom 3 nodes
@@ -125,7 +125,7 @@ class PathFinder {
                 }
                 neighbourNode = cell[currentNode.row + 1][currentNode.col];
                 if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST);
+                    addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + Vertical_Horizontal_COST  - currentNode.hCost);
 
                 //check the currentNode nodes bottom left node
                 if (currentNode.col - 1 >= 0 && forAllDirections) {
@@ -136,7 +136,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row + 1][currentNode.col - 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST  - currentNode.hCost);
                 }
 
                 //check the currentNode nodes bottom right node
@@ -148,7 +148,7 @@ class PathFinder {
                     }
                     neighbourNode = cell[currentNode.row + 1][currentNode.col + 1];
                     if (neighbourNode != null && !cell[neighbourNode.row][neighbourNode.col].visited)
-                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST);
+                        addToOpenedList(currentNode, neighbourNode, currentNode.finalCost + DIAGONAL_COST - currentNode.hCost);
                 }
             }
         }
@@ -156,7 +156,7 @@ class PathFinder {
 
     static void Man() {
         Vertical_Horizontal_COST = 10;
-        pathDesign = 1;
+//        pathDesign = 1;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -176,7 +176,7 @@ class PathFinder {
 
     static void Ec() {
         DIAGONAL_COST = 14;
-        pathDesign = 2;
+//        pathDesign = 2;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -197,7 +197,7 @@ class PathFinder {
 
     static void Che() {
         DIAGONAL_COST = 10;
-        pathDesign = 3;
+//        pathDesign = 3;
 
         //assign a new matrix object
         cell = new Node[PathFindingOnSquaredGrid.matrixSize][PathFindingOnSquaredGrid.matrixSize];
@@ -215,10 +215,10 @@ class PathFinder {
         //        showLinePath();
     }
 
-    private static void addToOpenedList(Node currentNode, Node neighbourNode, double cost) {
+    private static void addToOpenedList(Node currentNode, Node neighbourNode, double gCost) {
 
         //add path cost and current node hCost
-        double neighbourNodeFinalCost = neighbourNode.hCost + cost;
+        double neighbourNodeFinalCost = neighbourNode.hCost  + gCost;
 
         boolean inOpenedList = openedList.contains(neighbourNode);
 
@@ -275,11 +275,9 @@ class PathFinder {
 
                     if (currentNode.previous.col == currentNode.col) {
                         costForThePath += Vertical_Horizontal_COST;
-                    }
-                    else if (currentNode.previous.row == currentNode.row) {
+                    } else if (currentNode.previous.row == currentNode.row) {
                         costForThePath += Vertical_Horizontal_COST;
-                    }
-                    else {
+                    } else {
                         costForThePath += DIAGONAL_COST;
                     }
 //                    path.add(currentNode.previous);
@@ -312,15 +310,13 @@ class PathFinder {
         }
     }
 
-    private static void assignHCost(Node vertex){
-        if(pathDesign==1){
-            cell[vertex.row][vertex.col].hCost = Math.abs(vertex.row - endI) + Math.abs(vertex.col - endJ);
-        }
-        else if(pathDesign==2){
-            cell[vertex.row][vertex.col].hCost = (int) Math.sqrt(Math.pow(vertex.row - endI,2) + Math.pow(vertex.col - endJ,2));
-        }
-        else{
-            cell[vertex.row][vertex.col].hCost = Math.max(Math.abs(vertex.row - endI),Math.abs(vertex.col - endJ));
+    private static void assignHCost(Node vertex) {
+        if (pathDesign == 1) {
+            cell[vertex.row][vertex.col].hCost = (Math.abs(vertex.row - endI) + Math.abs(vertex.col - endJ));
+        } else if (pathDesign == 2) {
+            cell[vertex.row][vertex.col].hCost = (int) Math.sqrt(Math.pow(vertex.row - endI, 2) + Math.pow(vertex.col - endJ, 2));
+        } else {
+            cell[vertex.row][vertex.col].hCost = Math.max(Math.abs(vertex.row - endI), Math.abs(vertex.col - endJ));
         }
     }
 }
