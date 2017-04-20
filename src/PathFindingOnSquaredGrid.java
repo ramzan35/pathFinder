@@ -233,7 +233,7 @@ public class PathFindingOnSquaredGrid {
 
             try {
 //                AStar.myMethod(Ai, Aj, Bi, Bj, vertex, randomlyGenMatrix);
-//                timerFlow = new Stopwatch();
+                timerFlow = new Stopwatch();
 
                 //initialize variables in PathFinder class
                 PathFinder.initializeVar(Ai, Aj, Bi, Bj, randomlyGenMatrix);
@@ -280,6 +280,7 @@ public class PathFindingOnSquaredGrid {
                         break;
                     case "C":
                         PathFinder.pathDesign=3;
+                        StdDraw.setPenRadius(0.006);
                         timerFlow = new Stopwatch();
                         PathFinder.Che();
                         break;
@@ -288,7 +289,7 @@ public class PathFindingOnSquaredGrid {
                     default:
                         System.out.println("Enter a valid selection");
                 }
-
+                StdDraw.setPenRadius(0.001);
 //                show the starting and end nodes with circle
                 show(randomlyGenMatrix, true, Ai, Aj, Bi, Bj);
 
